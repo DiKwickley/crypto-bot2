@@ -1,0 +1,37 @@
+ah shit here we go again
+
+secret key = yauS1RGW7x2BaWf83bhPfF8ENQutcZ1W3fDFQEWA9xQm22ZkUNxomtHwyAc8zvQz
+api key = Ucm9Bk2CxeXjBbkbYO8psVZpbJG6V1VUfco6AD3DVsFpipYyra2fsPrjLnRGLDo2
+
+this is the second time i will be making this interface, fuck it, my life's a mess
+anyway, if it is second time, it definetly has to be much much better than last time
+points to remember:
+    make it modular
+    focus on variable names
+    this is later going to run on a rasberry pi. write efficiently
+
+
+things that is required
+    - get historical data
+    - get indicator data  
+        last time things were quite dicey with limits and all that. keep it uniform this time
+            - ichimoku
+    - make a common interface for backtesting and live market
+        should be modular
+        different strategies could be loaded without any hassale
+            -things passed in a strategy
+                - data 
+
+
+notes:
+    Oct 17:
+        i worked quite a lot today. but i was able to make as much progress. 
+        i have discovered a better way to handle data.
+        panda's dataframe. it's really nifty.
+        makes everthing clean.
+        anyway the indicator works and now only making the backtesting interface is left
+
+step 1 : get historical data function
+step 2 : make the ichimoku indicator
+step 3 : make backtesting interface
+step 4 : backtest the thought strategy
