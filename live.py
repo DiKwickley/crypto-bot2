@@ -7,11 +7,23 @@ from termcolor import colored
 import sys
 import os
 import pymongo
-
+pp = pprint.PrettyPrinter(depth=4)
 
 symbol = sys.argv[1]
 time_interval = sys.argv[2]
 
+
+all_trade = []
+trade = {
+    'trade_status' : False,
+    'trade_percentage' : 0,
+    'current_price' : None,
+    'current_open' : None,
+    'buy_price' : None,
+    'buy_time' : None,
+    'sell_price' : None,
+    'sell_time' : None
+}
 
 # config database
 mongo_uri = "mongodb+srv://dikwickley:Aniketsprx077@cluster0.jcy0v.mongodb.net/bot2?retryWrites=true&w=majority"
@@ -27,6 +39,10 @@ if not reports.find_one({ "$and": [{"pair": symbol}, {"interval": time_interval}
         "report" : {}
     }
     reports.insert_one(pair)
+else:
+    all_trade = reports.find_one({ "$and": [{"pair": symbol}, {"interval": time_interval}]})['report']['all_trades']
+
+# pp.pprint(all_trade)
 
 
 #just to print dict objects nicely
@@ -47,18 +63,6 @@ from bollinger import get_bollinger
 now = datetime.datetime.now()
 testing_start_at = now.strftime("%d-%m-%Y %H:%M:%S")
 
-
-all_trade = []
-trade = {
-    'trade_status' : False,
-    'trade_percentage' : 0,
-    'current_price' : None,
-    'current_open' : None,
-    'buy_price' : None,
-    'buy_time' : None,
-    'sell_price' : None,
-    'sell_time' : None
-}
 
 
 
